@@ -9,12 +9,10 @@
 </head>
 <body>
     <div class="wrapper">   
-    
         <nav class="nav">
             <div class="nav-logo">
                 <p>DoD</p>
             </div>
-
             <div class="nav-menu">
                 <ul>
                     <li><a href="#" class="link active">Home</a></li>
@@ -24,31 +22,29 @@
                 </ul>
             </div>
             <div class="nav-button">
-                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
-                <button class="btn  white-btn" id="registerBtn" onclick="register()">Sign Up</button>
+                <button class="btn white-btn" id="loginBtn" onclick="showLogin()">Sign In</button>
+                <button class="btn white-btn" id="registerBtn" onclick="showRegister()">Sign Up</button>
             </div>
             <div class="nav-menu-btn">
                 <i class="bx bx-menu" onclick="myMenuFunction()"></i>
             </div>
         </nav>
-
         <div class="form-box">
             <div class="div-container" id="login">
                 <div class="top">
-                    <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                    <span>Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></span>
                     <header>Login</header>
                 </div>
-                
                 <div class="input-box">
-                    <input type="email" class="input-field" placeholder="Username or Email">
+                    <input type="email" id="login-email" class="input-field" placeholder="Username or Email">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password">
+                    <input type="password" id="login-password" class="input-field" placeholder="Password">
                     <i class="bx bx-lock-alt"></i>
                 </div>
                 <div class="input-box">
-                    <input type="submit" class="submit" value="Sign In">
+                    <input type="button" class="submit" value="Sign In" onclick="login()">
                 </div>
                 <div class="two-col">
                     <div class="one">
@@ -60,30 +56,29 @@
                     </div>
                 </div>
             </div>
-
             <div class="div-container hidden" id="register">
                 <div class="top">
-                    <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                    <span>Have an account? <a href="#" onclick="showLogin()">Login</a></span>
                     <header>Sign Up</header>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Firstname">
+                    <input type="text" id="first_name" class="input-field" placeholder="Firstname">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Lastname">
+                    <input type="text" id="last_name" class="input-field" placeholder="Lastname">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="email" class="input-field" placeholder="Email">
+                    <input type="email" id="register-email" class="input-field" placeholder="Email">
                     <i class="bx bx-envelope"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password">
+                    <input type="password" id="register-password" class="input-field" placeholder="Password">
                     <i class="bx bx-lock-alt"></i>
                 </div>
                 <div class="input-box">
-                    <input type="submit" class="submit" value="Register">
+                    <input type="button" class="submit" value="Register" onclick="register()">
                 </div>
                 <div class="two-col">
                     <div class="one">
@@ -97,16 +92,11 @@
             </div>
         </div>
     </div>
-    <script>
-        function login() {
-            document.getElementById("login").classList.remove("hidden");
-            document.getElementById("register").classList.add("hidden");
-        }
-
-        function register() {
-            document.getElementById("login").classList.add("hidden");
-            document.getElementById("register").classList.remove("hidden");
-        }
-    </script>
+    <!-- Load Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js"></script>
+    <!-- Load your custom script after Firebase SDKs -->
+    <script src="index.js"></script>
 </body>
 </html>

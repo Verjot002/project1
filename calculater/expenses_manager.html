@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Budget Manager</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .budget-manager {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="number"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: pre-line; 
+        }
+    </style>
+</head>
+<body>
+    <div class="budget-manager">
+        <h1>Home Budget Manager</h1>
+        <label>Enter Monthly Salary
+            <input type="number" id="salary" placeholder="Enter Salary">
+        </label>
+        <label>Enter Bill Expenses
+            <input type="number" id="bills" placeholder="Enter Bills">
+        </label>
+        <label>Enter Medicine Expenses
+            <input type="number" id="medicine" placeholder="Enter Medicine">
+        </label>
+        <label>Enter Grocery Expenses
+            <input type="number" id="groceries" placeholder="Enter Groceries">
+        </label>
+        <label>Enter oil and Gas Expenses
+            <input type="number" id="gas" placeholder="Enter oil/Gas">
+        </label>
+        <label>Enter Shopping Expenses
+            <input type="number" id="shopping" placeholder="Enter Shopping">
+        </label>
+        <label>Enter Other Expenses
+            <input type="number" id="other" placeholder="Enter Other Expenses">
+        </label>
+        <button onclick="calculateBudget()">Calculate</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculateBudget() {
+            var salary = parseFloat(document.getElementById('salary').value);
+            var bills = parseFloat(document.getElementById('bills').value) || 0;
+            var medicine = parseFloat(document.getElementById('medicine').value) || 0;
+            var groceries = parseFloat(document.getElementById('groceries').value) || 0;
+            var gas = parseFloat(document.getElementById('gas').value) || 0;
+            var shopping = parseFloat(document.getElementById('shopping').value) || 0;
+            var other = parseFloat(document.getElementById('other').value) || 0;
+            
+            if (!isNaN(salary)) {
+                var totalExpenses = bills + medicine + groceries + gas + shopping + other;
+                var remainingAmount = salary - totalExpenses;
+                
+                var resultText = 
+                    'Monthly Salary: ' + salary.toFixed(2) + '\n' +
+                    'Total Expenses:\n' +
+                    '  - Bills: ' + bills.toFixed(2) + '\n' +
+                    '  - Medicine: ' + medicine.toFixed(2) + '\n' +
+                    '  - Groceries: ' + groceries.toFixed(2) + '\n' +
+                    '  - Gas: ' + gas.toFixed(2) + '\n' +
+                    '  - Shopping: ' + shopping.toFixed(2) + '\n' +
+                    '  - Other Expenses: ' + other.toFixed(2) + '\n' + '\n'+
+                    'Total Expenses: ' + totalExpenses.toFixed(2) + '\n' +
+                    'Remaining Amount After Expenses: ' + remainingAmount.toFixed(2);
+                
+                document.getElementById('result').innerText = resultText;
+            } else {
+                document.getElementById('result').innerText = 'Please enter a valid salary.';
+            }
+        }
+    </script>
+</body>
+</html>

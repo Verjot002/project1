@@ -14,13 +14,13 @@ var newsDataArr = [];
 
 // APIs
 const API_KEY = "57310ef8b6624a36ad4a484e40f8a021";
-const HEADLINES_NEWS = "https://newsapi.org/v2/top-headlines?country=in&apiKey=";
-const GENERAL_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=";
-const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=";
-const SPORTS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=";
-const ENTERTAINMENT_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=";
-const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=8&apiKey=";
-const SEARCH_NEWS = "https://newsapi.org/v2/everything?q=";
+const HEADLINES_NEWS = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${API_KEY}`;
+const GENERAL_NEWS = `https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=${API_KEY}`;
+const BUSINESS_NEWS = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${API_KEY}`;
+const SPORTS_NEWS = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${API_KEY}`;
+const ENTERTAINMENT_NEWS = `https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${API_KEY}`;
+const TECHNOLOGY_NEWS = `https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=8&apiKey=${API_KEY}`;
+const SEARCH_NEWS = `https://newsapi.org/v2/everything?q=`;
 
 window.onload = function() {
     newsType.innerHTML = "<h4>Headlines</h4>";
@@ -59,109 +59,127 @@ searchBtn.addEventListener("click", function() {
 
 const fetchHeadlines = async () => {
     try {
-        const response = await fetch(HEADLINES_NEWS + API_KEY);
+        const response = await fetch(HEADLINES_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching headlines: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching headlines:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
 const fetchGeneralNews = async () => {
     try {
-        const response = await fetch(GENERAL_NEWS + API_KEY);
+        const response = await fetch(GENERAL_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching general news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching general news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
 const fetchBusinessNews = async () => {
     try {
-        const response = await fetch(BUSINESS_NEWS + API_KEY);
+        const response = await fetch(BUSINESS_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching business news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching business news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
 const fetchEntertainmentNews = async () => {
     try {
-        const response = await fetch(ENTERTAINMENT_NEWS + API_KEY);
+        const response = await fetch(ENTERTAINMENT_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching entertainment news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching entertainment news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
 const fetchSportsNews = async () => {
     try {
-        const response = await fetch(SPORTS_NEWS + API_KEY);
+        const response = await fetch(SPORTS_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching sports news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching sports news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
 const fetchTechnologyNews = async () => {
     try {
-        const response = await fetch(TECHNOLOGY_NEWS + API_KEY);
+        const response = await fetch(TECHNOLOGY_NEWS);
         newsDataArr = [];
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching technology news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching technology news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 
@@ -173,14 +191,17 @@ const fetchQueryNews = async () => {
         if (response.ok) {
             const myJson = await response.json();
             newsDataArr = myJson.articles;
+            displayNews();
+        } else if (response.status === 426) {
+            console.error("Error fetching query news: 426 Upgrade Required. Check your API subscription plan.");
+            newsdetails.innerHTML = "<h5>Upgrade Required. Please check your API subscription plan.</h5>";
         } else {
             console.error("Error fetching query news:", response.status, response.statusText);
             newsdetails.innerHTML = "<h5>No data found.</h5>";
-            return;
         }
-        displayNews();
     } catch (error) {
         console.error("Error:", error);
+        newsdetails.innerHTML = "<h5>No data found.</h5>";
     }
 };
 

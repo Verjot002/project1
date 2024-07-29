@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Expense Splitter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .splitter {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: pre-line; /* Preserve newlines in the result display */
+        }
+    </style>
+</head>
+<body>
+    <div class="splitter">
+        <h1>Trip Expense Splitter</h1>
+        <label>Enter Total Trip Expenses
+            <input type="number" id="totalExpenses" placeholder="Enter Total Expenses">
+        </label>
+        <label>Enter Number of Friends
+            <input type="number" id="numFriends" placeholder="Enter Number of Friends">
+        </label>
+        <button onclick="calculateSplit()">Calculate Split</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculateSplit() {
+            var totalExpenses = parseFloat(document.getElementById('totalExpenses').value);
+            var numFriends = parseInt(document.getElementById('numFriends').value);
+            
+            if (!isNaN(totalExpenses) && !isNaN(numFriends) && numFriends > 0) {
+                var perPerson = totalExpenses / numFriends;
+                
+                var resultText = 
+                    'Total Trip Expenses: ' + totalExpenses.toFixed(2) + '\n' +
+                    'Number of Friends: ' + numFriends + '\n\n' +
+                    'Each Person Should Pay: ' + perPerson.toFixed(2);
+                
+                document.getElementById('result').innerText = resultText;
+            } else {
+                document.getElementById('result').innerText = 'Please enter valid values.';
+            }
+        }
+    </script>
+</body>
+</html>
